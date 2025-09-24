@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LateVisuals - From Home to Hospital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .main-background {
+            background-color: #f0fdf4;
+            background-image: radial-gradient(circle, rgba(0, 163, 0, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* --- Card Styles --- */
+        .card {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          position: relative;
+          background: linear-gradient(to bottom, #e6fee6, #cffddc);
+          border-radius: 10px;
+          padding: 2em 1.2em;
+          text-decoration: none;
+          z-index: 0;
+          overflow: hidden;
+          /* Re-added aspect-ratio to ensure cards are square and size correctly */
+          aspect-ratio: 1 / 1;
+        }
+        
+        .card-title {
+          color: #262626;
+          font-size: 1.5em;
+          line-height: normal;
+          font-weight: 700;
+          margin-bottom: 0.5em;
+          transition: color 0.4s ease-out; /* Added transition for smooth color change */
+        }
+
+        .small-desc {
+          font-size: 1em;
+          font-weight: 400;
+          line-height: 1.5em;
+          color: #452c2c;
+          transition: color 0.4s ease-out; /* Added transition for smooth color change */
+        }
+
+        .go-corner {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          width: 2em;
+          height: 2em;
+          overflow: hidden;
+          top: 0;
+          right: 0;
+          background-color: #00A300;
+          border-radius: 0 4px 0 32px;
+        }
+
+        .go-arrow {
+          margin-top: -4px;
+          margin-right: -4px;
+          color: white;
+          font-family: courier, sans;
+        }
+
+        /* --- Card Hover Animation --- */
+        .card:before {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          top: -16px;
+          right: -16px;
+          background: #00A300;
+          height: 32px;
+          width: 32px;
+          border-radius: 32px;
+          transform: scale(1);
+          transform-origin: 50% 50%;
+          transition: transform 0.35s ease-out;
+        }
+
+        .card:hover:before {
+          transform: scale(50);
+        }
+
+        .card:hover .small-desc {
+          color: rgba(255, 255, 255, 0.8);
+        }
+
+        .card:hover .card-title {
+          color: #ffffff;
+        }
+
+        /* --- Initial Load Animation --- */
+        .fade-in-left, .fade-in-right {
+            opacity: 0;
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+        }
+        .fade-in-left { transform: translateX(-40px); }
+        .fade-in-right { transform: translateX(40px); }
+        
+        /* Visible states for animations */
+        .fade-in-left.is-visible, .fade-in-right.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="MainPage.html" class="text-xl font-semibold text-gray-800">
+                LateVisuals
+            </a>
+            <div class="flex items-center space-x-6">
+                <a href="AboutTheTeam.html" class="text-gray-600 hover:text-[#00A300] transition-colors">About Us</a>
+                <a href="Inquiries.html" class="text-gray-600 hover:text-[#00A300] transition-colors">Inquiries</a>
+                <a href="ContactUs.html" class="text-gray-600 hover:text-[#00A300] transition-colors">Contact Us</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow main-background">
+        <div class="container mx-auto p-6">
+            <!-- Page Title and Motto -->
+            <div class="text-center my-16">
+                <h1 class="text-5xl font-bold text-gray-800 fade-in-left">LateVisuals</h1>
+                <p class="mt-2 text-lg text-gray-600 fade-in-right">from home to hospital</p>
+            </div>
+
+            <!-- Responsive Card Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-24">
+                
+                <!-- Card 1 -->
+                <a href="WhatWeDo.html" class="card fade-in-left">
+                    <div>
+                        <p class="card-title">What we do</p>
+                        <p class="small-desc">
+                          Late Visuals, founded in 2025 by college students, helps the 
+                          elderly and sick transition from home to hospital by recreating 
+                          their favorite room, making the hospital feel safe and familiar.
+                        </p>
+                    </div>
+                    <div class="go-corner">
+                      <div class="go-arrow">→</div>
+                    </div>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="HowWeDoIt.html" class="card fade-in-right">
+                    <div>
+                        <p class="card-title">How we do it</p>
+                        <p class="small-desc">
+                          By capturing precise photos of a customer’s room, we use 3D mapping
+                           to project the images onto hospital curtains, helping patients feel
+                           at home during a difficult time.
+                        </p>
+                    </div>
+                    <div class="go-corner">
+                      <div class="go-arrow">→</div>
+                    </div>
+                </a>
+
+                <!-- Card 3 -->
+                <a href="OurInspiration.html" class="card fade-in-left">
+                    <div>
+                        <p class="card-title">Our inspiration</p>
+                        <p class="small-desc">
+                          The idea came to me after seeing a hospital full of sick, lonely people. 
+                          Their lives were already changed by illness, yet being taken from the comfort 
+                          of their homes into a cold, unfamiliar place made it even harder.
+                        </p>
+                    </div>
+                    <div class="go-corner">
+                      <div class="go-arrow">→</div>
+                    </div>
+                </a>
+
+                <!-- Card 4 -->
+                <a href="AboutTheTeam.html" class="card fade-in-right">
+                    <div>
+                        <p class="card-title">About the team</p>
+                        <p class="small-desc">
+                          My name is Liam O'Connor and i'm a second year student studying computer science at UCD.
+                        </p>
+                    </div>
+                    <div class="go-corner">
+                      <div class="go-arrow">→</div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-black text-gray-300">
+        <div class="container mx-auto px-6 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-semibold text-white text-lg mb-2">LateVisuals</h3>
+                    <p class="text-sm">from home to hospital</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white text-lg mb-2">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="WhatWeDo.html" class="hover:text-white transition-colors">What We Do</a></li>
+                        <li><a href="HowWeDoIt.html" class="hover:text-white transition-colors">How We Do It</a></li>
+                        <li><a href="OurInspiration.html" class="hover:text-white transition-colors">Our Inspiration</a></li>
+                        <li><a href="AboutTheTeam.html" class="hover:text-white transition-colors">About The Team</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white text-lg mb-2">Legal</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white text-lg mb-2">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
+                        </a>
+                        <a href="#" class="hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+                        </a>
+                        <a href="#" class="hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427.465C9.795 2.013 10.148 2 12.315 2zm-1.161 4.573a4.726 4.726 0 11-4.726 4.726 4.726 4.726 0 014.726-4.726zm-2.17 2.17a2.556 2.556 0 102.556 2.556 2.556 2.556 0 00-2.556-2.556z" clip-rule="evenodd"></path><path d="M16.965 6.57a1.285 1.285 0 100 2.57 1.285 1.285 0 000-2.57z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-6 text-center text-sm">
+                <p>© 2025 LateVisuals. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.fade-in-left, .fade-in-right');
+            // Use a short timeout to ensure the initial state is rendered before the transition begins
+            setTimeout(() => {
+                animatedElements.forEach(el => {
+                    el.classList.add('is-visible');
+                });
+            }, 100);
+        });
+    </script>
+
+</body>
+</html>
+
